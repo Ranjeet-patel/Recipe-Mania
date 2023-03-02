@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "nrecipe",
+			"path": "../.."
+		},
+		{
+			"name": "MongoDB Data",
+			"path": "../../../RecipeBlog-MongoDB-Node.js-main/MongoDB Data"
+		}
+	],
+	"settings": {}
+}

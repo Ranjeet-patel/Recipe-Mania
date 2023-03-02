@@ -6,6 +6,10 @@ const recipeController = require('../controllers/recipeController');
  * App Routes 
 */
 router.get('/', recipeController.homepage);
+router.get('/about', recipeController.aboutpage);
+router.get('/contact', recipeController.contactpage);
+router.post('/contact', recipeController.contactpagePost);
+
 router.get('/recipe/:id', recipeController.exploreRecipe );
 router.get('/categories', recipeController.exploreCategories);
 router.get('/categories/:id', recipeController.exploreCategoriesById);
