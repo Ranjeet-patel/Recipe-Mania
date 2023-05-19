@@ -31,18 +31,15 @@ const routes = require('./server/routes/recipeRoutes.js');
 
 app.use('/', routes);
 
-
+console.log(`${process.env.MONGODB_URI}`);
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
   .then(result => {
-    // https
-    //   .createServer({ key: privateKey, cert: certificate }, app)
-    //   .listen(process.env.PORT || 3000);
-
-    app.listen(4000);
+    app.listen(process.env.PORT || 3000);
+    console.log(`server run on ${process.env.PORT}`);
   })
   .catch(err => {
     console.log(err);

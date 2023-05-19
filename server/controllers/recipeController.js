@@ -17,7 +17,7 @@ exports.homepage = async (req, res) => {
     const spicy = await Recipe.find({ 'category': 'spicy' }).limit(limitNumber);
     const indian = await Recipe.find({ 'category': 'indian' }).limit(limitNumber)
 
-    const food = { latest, Gujrati, Rajasthani, spicy ,indian};
+    const food = { latest, Gujrati, Rajasthani, spicy, indian };
 
     res.render('index', { title: 'Recipe Mania - Home', categories, food });
   } catch (error) {
@@ -270,38 +270,165 @@ exports.submitRecipeOnPost = async (req, res) => {
 // insertDymmyCategoryData();
 
 
-// async function insertDymmyRecipeData(){
-//   try {
-//     await Recipe.insertMany([
-//       { 
-//         "name": "Recipe Name Goes Here",
-//         "description": `Recipe Description Goes Here`,
-//         "email": "recipeemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "Rajasthani", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//       { 
-//         "name": "Recipe Name Goes Here",
-//         "description": `Recipe Description Goes Here`,
-//         "email": "recipeemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "Rajasthani", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//     ]);
-//   } catch (error) {
-//     console.log('err', + error)
-//   }
-// }
+async function insertDymmyRecipeData() {
+  try {
+    await Recipe.insertMany([
+      {
+        "name": "Samosa",
+        "description": "Fried or baked pastry with savory filling, such as spiced potatoes, onions, peas, and lentils.",
+        "email": "user2@example.com",
+        "ingredients": ["potatoes", "onions", "peas", "lentils", "flour", "ghee", "spices"],
+        "category": "indian",
+        "image": "https://www.example.com/images/samosa.jpg"
+      },
+      {
+        "name": "Beef Stroganoff",
+        "description": "A Russian dish of sautéed pieces of beef in a sour cream-based sauce, served over egg noodles.",
+        "email": "user2@example.com",
+        "ingredients": ["beef", "onions", "mushrooms", "sour cream", "egg noodles"],
+        "category": "spicy",
+        "image": "https://www.example.com/images/beef-stroganoff.jpg"
+      },
+      {
+        "name": "Chicken Tikka Masala",
+        "description": "A popular Indian dish of marinated chicken pieces that are grilled and then simmered in a creamy tomato sauce.",
+        "email": "user1@example.com",
+        "ingredients": ["chicken", "yogurt", "spices", "tomato", "cream"],
+        "category": "indian",
+        "image": "https://www.example.com/images/chicken-tikka-masala.jpg"
+      },
+      {
+        "name": "Pesto Pasta",
+        "description": "A simple pasta dish made with a sauce of crushed basil, pine nuts, garlic, Parmesan cheese, and olive oil.",
+        "email": "user2@example.com",
+        "ingredients": ["pasta", "basil", "pine nuts", "garlic", "Parmesan cheese", "olive oil"],
+        "category": "italian",
+        "image": "https://www.example.com/images/pesto-pasta.jpg"
+      },
+      {
+        "name": "Miso Soup",
+        "description": "A Japanese soup made with miso paste, dashi broth, and ingredients such as tofu, seaweed, and green onions.",
+        "email": "user1@example.com",
+        "ingredients": ["miso paste", "dashi broth", "tofu", "seaweed", "green onions"],
+        "category": "spicy",
+        "image": "https://www.example.com/images/miso-soup.jpg"
+      },
+      {
+        "name": "Palak Paneer",
+        "description": "A delicious Indian dish made with spinach and cottage cheese",
+        "email": "john@example.com",
+        "ingredients": ["spinach", "paneer", "onion", "tomato", "garlic", "ginger", "spices"],
+        "category": "indian",
+        "image": "https://www.example.com/images/palak-paneer.jpg"
+      },
+      {
+        "name": "Rajma Chawal",
+        "description": "A popular Punjabi dish made with kidney beans and rice",
+        "email": "jane@example.com",
+        "ingredients": ["kidney beans", "rice", "onion", "tomato", "garlic", "ginger", "spices"],
+        "category": "indian",
+        "image": "https://www.example.com/images/rajma-chawal.jpg"
+      },
+      {
+        "name": "Chana Masala",
+        "description": "A spicy and tangy chickpea dish from the North Indian cuisine",
+        "email": "john@example.com",
+        "ingredients": ["chickpeas", "onion", "tomato", "garlic", "ginger", "spices"],
+        "category": "indian",
+        "image": "https://www.example.com/images/chana-masala.jpg"
+      },
+      {
+        "name": "Samosa",
+        "description": "A popular Indian snack filled with spiced potatoes and peas",
+        "email": "jane@example.com",
+        "ingredients": ["potatoes", "peas", "flour", "spices"],
+        "category": "indian",
+        "image": "https://www.example.com/images/samosa.jpg"
+      },
+      {
+        "name": "Pav Bhaji",
+        "description": "A popular Mumbai street food made with spiced mashed vegetables and bread",
+        "email": "john@example.com",
+        "ingredients": ["potatoes", "cauliflower", "carrots", "peas", "onion", "tomato", "garlic", "ginger", "spices"],
+        "category": "indian",
+        "image": "https://www.example.com/images/pav-bhaji.jpg"
+      },
+      {
+        "name": "Butter Chicken",
+        "description": "A popular Punjabi dish made with chicken in a creamy tomato-based sauce",
+        "email": "jane@example.com",
+        "ingredients": ["chicken", "butter", "cream", "tomato", "garlic", "ginger", "spices"],
+        "category": "indian",
+        "image": "https://www.example.com/images/butter-chicken.jpg"
+      },
+      {
+        "name": "Masala Chai",
+        "description": "A spicy and aromatic Indian tea made with milk, tea leaves, and spices",
+        "email": "john@example.com",
+        "ingredients": ["milk", "tea leaves", "cardamom", "cinnamon", "ginger", "cloves"],
+        "category": "indian",
+        "image": "https://www.example.com/images/masala-chai.jpg"
+      },
+      {
+        "name": "Paneer Butter Masala",
+        "description": "A popular North Indian dish made with paneer in a buttery and creamy tomato-based gravy.",
+        "email": "john.doe@example.com",
+        "ingredients": ["paneer", "tomatoes", "onions", "butter", "cream", "spices"],
+        "category": "indian",
+        "image": "https://example.com/images/paneer-butter-masala.jpg"
+      },
+      {
+        "name": "Beef Stroganoff",
+        "description": "A classic Russian dish made with beef in a sour cream sauce, served over egg noodles.",
+        "email": "jane.doe@example.com",
+        "ingredients": ["beef", "onions", "mushrooms", "sour cream", "egg noodles", "spices"],
+        "category": "spicy",
+        "image": "https://example.com/images/beef-stroganoff.jpg"
+      },
+      {
+        "name": "Tandoori Chicken",
+        "description": "A popular Indian dish made with chicken marinated in yogurt and spices, cooked in a tandoor oven.",
+        "email": "john.doe@example.com",
+        "ingredients": ["chicken", "yogurt", "spices", "lemon juice", "garlic", "ginger"],
+        "category": "indian",
+        "image": "https://example.com/images/tandoori-chicken.jpg"
+      },
+      {
+        "name": "Lamb Curry",
+        "description": "A spicy Indian dish made with lamb cooked in a tomato-based gravy with aromatic spices.",
+        "email": "jane.doe@example.com",
+        "ingredients": ["lamb", "tomatoes", "onions", "spices", "yogurt", "coriander"],
+        "category": "spicy",
+        "image": "https://example.com/images/lamb-curry.jpg"
+      },
+      {
+        "name": "Fish and Chips",
+        "description": "A classic British dish made with battered fish and thick-cut fries, served with tartar sauce.",
+        "email": "john.doe@example.com",
+        "ingredients": ["fish", "potatoes", "flour", "beer", "lemon juice", "mayonnaise"],
+        "category": "spicy",
+        "image": "https://example.com/images/fish-and-chips.jpg"
+      },
+      {
+        "name": "Pad Thai",
+        "description": "A popular Thai dish made with rice noodles stir-fried with shrimp, tofu, egg, and bean sprouts.",
+        "email": "jane.doe@example.com",
+        "ingredients": ["rice noodles", "shrimp", "tofu", "bean sprouts", "eggs", "peanuts"],
+        "category": "spicy",
+        "image": "https://example.com/images/pad-thai.jpg"
+      },
+      {
+        "name": "Sushi Rolls",
+        "description": "A Japanese dish made with sushi rice and various fillings, rolled in sheets of seaweed.",
+        "email": "john.doe@example.com",
+        "ingredients": ["sushi rice", "seaweed", "avocado", "cucumber", "crab meat", "wasabi"],
+        "category": "spicy",
+        "image": "https://example.com/images/sushi-rolls.jpg"
+      },]);
+  } catch (error) {
+    console.log('err', + error)
+  }
+}
 
-// insertDymmyRecipeData();
+insertDymmyRecipeData();
 
